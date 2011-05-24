@@ -1,0 +1,7 @@
+RewriteEngine On
+
+Options +FollowSymLinks
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)/?$ index.php?id=$1 [QSA,L]
+
+Options -Indexes

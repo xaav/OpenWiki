@@ -517,7 +517,7 @@ class Markdown_Parser {
 	
 	function doHardBreaks($text) {
 		# Do hard breaks:
-		return preg_replace_callback('/ {2,}\n/', 
+		return preg_replace_callback('/\n/', 
 			array(&$this, '_doHardBreaks_callback'), $text);
 	}
 	function _doHardBreaks_callback($matches) {
