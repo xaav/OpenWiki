@@ -1,0 +1,3 @@
+[submodule "js/wmd"]
+	path = js/wmd
+	url = git://github.com/olleolleolle/wmd.git
