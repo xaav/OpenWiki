@@ -5,7 +5,7 @@ class WikiController {
 	protected $config = array(
 		'docDir'      => '/tmp/',
 		'defaultPage' => 'index',
-		'newPageText' => 'Тази страница все още не съществува.<br>Натиснете "Редактирай", за да я създадете.',
+		'newPageText' => 'This page does not exist yet.<br>Click "Edit" to create it.',
 		'markdownExt' => 'markdown'
 	);
 
@@ -82,7 +82,7 @@ class WikiController {
 				break;
 			case 'delete':
 				@unlink($action->model->file);
-				$this->redirectTo($this->baseUrl . $action->page, array('success' => "Страницата '{$action->page}' е изтрита успешно."));
+				$this->redirectTo($this->baseUrl . $action->page, array('success' => "Page '{$action->page}' deleted successfully."));
 				break;
 			case 'preview':
 				$response = $this->doPreview($action);
@@ -112,8 +112,8 @@ class WikiController {
 			'content'  => $this->renderDocument($action),
 			'editForm' => '',
 			'options'  => array(
-				'Редактирай' => "{$action->base}{$action->page}?action=edit&id={$action->page}",
-				'Изтрий'     => "{$action->base}{$action->page}?action=delete&confirm=true&id={$action->page}",
+				'Edit' => "{$action->base}{$action->page}?action=edit&id={$action->page}",
+				'Delete'     => "{$action->base}{$action->page}?action=delete&confirm=true&id={$action->page}",
 			),
 			'related'  => ''
 		);
@@ -123,11 +123,11 @@ class WikiController {
 
 	protected function doEdit($action) {
 		$response = array(
-			'title'    => "Редактиране: " . $this->pageName($action->page),
+			'title'    => "Edit: " . $this->pageName($action->page),
 			'content'  => '',
 			'editForm' => $this->renderEditForm($action),
 			'options'  => array(
-				'Отказ' => "{$action->base}{$action->page}"
+				'Refusal' => "{$action->base}{$action->page}"
 			),
 			'related'  => ''
 		);
@@ -137,11 +137,11 @@ class WikiController {
 
 	protected function doPreview($action) {
 		$response = array(
-			'title'    => "Преглед: " . $this->pageName($action->page),
+			'title'    => "View: " . $this->pageName($action->page),
 			'content'  => '<div class="preview">' . $this->renderPreviewDocument($action) . '</div>',
 			'editForm' => $this->renderEditForm($action),
 			'options'  => array(
-				'Отказ' => "{$action->base}{$action->page}"
+				'Refusal' => "{$action->base}{$action->page}"
 			),
 			'related'  => ''
 		);
@@ -159,9 +159,9 @@ class WikiController {
 			$action->model->content = $action->post->text;
 			$this->setModelData($action->model);
 
-			$this->redirectTo("{$action->base}{$action->page}", array('success' => 'Страницата е обновена успешно.'));
+			$this->redirectTo("{$action->base}{$action->page}", array('success' => 'This page is updated successfully.'));
 		} else {
-			$this->addMessage('error', 'Внимание: Възникнал е конфликт при опита за редакция на страницата.');
+			$this->addMessage('error', 'Attention: There was a conflict when trying to edit a page.');
 		}
 
 		return $this->doDisplay($action);
@@ -186,7 +186,7 @@ class WikiController {
 		if (!file_exists($directory)) {
 			mkdir($directory, 0777, true);
 		} elseif (!is_dir($directory)) {
-			$this->addMessage('error', "Грешка: неуспешен опит за създаване на {$model->file}");
+			$this->addMessage('error', "Error: unsuccessful attempt to create {$model->file}");
 			return;
 		}
 
@@ -311,7 +311,7 @@ class WikiController {
 			// Perhaps we need a config entry here
 		}
 
-		return dirname($server['SCRIPT_NAME']) . '/';
+		return dirname($server['SCRIPT_NAME']) /*. '/'*/;
 	}
 
 	protected function getPostDetails($request, $server) {
@@ -474,13 +474,13 @@ PAGE;
 		return <<<HTML
 <form action="{$action->base}{$action->page}" method="post" id="edit-page-form">
 	<fieldset>
-		<legend>Редакция на страница</legend>
-		<label for="text">Съдържание:</label><br>
+		<legend>Edit page</legend>
+		<label for="text">Content:</label><br>
 		<textarea cols="80" rows="80" name="text" id="text">{$form['raw']}</textarea>
 		<br>
 
-		<input type="submit" name="preview" value="Преглед">
-		<input type="submit" name="save" value="Запази">
+		<input type="submit" name="preview" value="View">
+		<input type="submit" name="save" value="Save">
 		<input type="hidden" name="updated" value="{$form['updated']}">
 	</fieldset>
 </form>
