@@ -1,3 +1,6 @@
 [submodule "js/wmd"]
 	path = js/wmd
 	url = git://github.com/ChiperSoft/wmd.git
+[submodule "lib/glip"]
+	path = lib/glip
+	url = git://github.com/patrikf/glip.git
