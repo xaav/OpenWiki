@@ -4,3 +4,6 @@
 [submodule "lib/glip"]
 	path = lib/glip
 	url = git://github.com/patrikf/glip.git
+[submodule "lib/geshi"]
+	path = lib/geshi
+	url = git://github.com/bitweaver/geshi.git
