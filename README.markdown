@@ -1,7 +1,7 @@
 PHP5 Markdown
 =============
 
-A simple wiki built around the standard PHP Markdown class.
+A simple wiki built around the standard PHP Markdown class. This wiki uses glip to keep version history. WMD is used to provide editor functionality.
 
 Disclaimer
 ----------
