@@ -311,7 +311,7 @@ class WikiController {
 			// Perhaps we need a config entry here
 		}
 
-		return dirname($server['SCRIPT_NAME']) /*. '/'*/;
+		return dirname($server['SCRIPT_NAME']) . '/';
 	}
 
 	protected function getPostDetails($request, $server) {
@@ -476,14 +476,16 @@ PAGE;
 	<fieldset>
 		<legend>Edit page</legend>
 		<label for="text">Content:</label><br>
-		<script defer type="text/javascript" src="{$action->base}/js/wmd/showdown.js"></script>
-		<textarea cols="80" rows="80" name="text" id="text">{$form['raw']}</textarea>
+		<script defer type="text/javascript" src="{$action->base}js/wmd/showdown.js"></script>
+		<div id="wmd-editor" class="wmd-panel">
+		<div id="wmd-button-bar"></div>
+		<textarea cols="80" rows="80" name="text" id="wmd-input">{$form['raw']}</textarea>
+		</div>
 		<br>
-
 		<input type="submit" name="preview" value="View">
 		<input type="submit" name="save" value="Save">
 		<input type="hidden" name="updated" value="{$form['updated']}">
-		<script defer type="text/javascript" src="{$action->base}/js/wmd/wmd.js"></script>
+		<script defer type="text/javascript" src="{$action->base}js/wmd/wmd.js"></script>
 	</fieldset>
 </form>
 HTML;
