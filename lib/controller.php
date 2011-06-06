@@ -478,7 +478,8 @@ PAGE;
 		<label for="text">Content:</label><br>
 		<div id="button-bar"></div>
 		<textarea cols="80" rows="80" name="text" id="text">{$form['raw']}</textarea>
-        <div id="preview"></div>
+        <label for="preview">Preview:</label><br>
+		<div id="preview"></div>
 		<br>
 		<input type="submit" name="save" value="Save">
 		<input type="hidden" name="updated" value="{$form['updated']}">
