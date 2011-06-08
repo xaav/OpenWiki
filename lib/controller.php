@@ -311,7 +311,7 @@ class WikiController {
 			// Perhaps we need a config entry here
 		}
 
-		return dirname($server['SCRIPT_NAME']) . '/';
+		return rtrim(dirname($server['SCRIPT_NAME']), '/') . '/';
 	}
 
 	protected function getPostDetails($request, $server) {
