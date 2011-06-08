@@ -135,6 +135,9 @@ class WikiController {
 		return $response;
 	}
 
+	/**
+	 * @deprecated Use WMD preview instead.
+	 */
 	protected function doPreview($action) {
 		$response = array(
 			'title'    => "View: " . $this->pageName($action->page),
@@ -451,6 +454,9 @@ PAGE;
 		);
 	}
 
+	/**
+	 * @deprecated Use WMD preview instead.
+	 */
 	protected function renderPreviewDocument($action) {
 		return Markdown(
 			$action->post->text,
