@@ -6,7 +6,7 @@ class WikiController {
 		'docDir'      => '/tmp/',
 		'defaultPage' => 'index',
 		'newPageText' => 'This page does not exist yet.<br>Click "Edit" to create it.',
-		'markdownExt' => 'markdown'
+		'markdownExt' => 'markdown',
 	);
 
 	// An instance of the Markdown parser
@@ -84,9 +84,6 @@ class WikiController {
 				@unlink($action->model->file);
 				$this->redirectTo($this->baseUrl . $action->page, array('success' => "Page '{$action->page}' deleted successfully."));
 				break;
-			case 'preview':
-				$response = $this->doPreview($action);
-				break;
 			case 'save':
 				$response = $this->doSave($action);
 				break;
@@ -125,23 +122,6 @@ class WikiController {
 		$response = array(
 			'title'    => "Edit: " . $this->pageName($action->page),
 			'content'  => '',
-			'editForm' => $this->renderEditForm($action),
-			'options'  => array(
-				'Refusal' => "{$action->base}{$action->page}"
-			),
-			'related'  => ''
-		);
-
-		return $response;
-	}
-
-	/**
-	 * @deprecated Use WMD preview instead.
-	 */
-	protected function doPreview($action) {
-		$response = array(
-			'title'    => "View: " . $this->pageName($action->page),
-			'content'  => '<div class="preview">' . $this->renderPreviewDocument($action) . '</div>',
 			'editForm' => $this->renderEditForm($action),
 			'options'  => array(
 				'Refusal' => "{$action->base}{$action->page}"
@@ -450,16 +430,6 @@ PAGE;
 	protected function renderDocument($action) {
 		return Markdown(
 			$action->model->content,
-			array($this, 'wikiLink')
-		);
-	}
-
-	/**
-	 * @deprecated Use WMD preview instead.
-	 */
-	protected function renderPreviewDocument($action) {
-		return Markdown(
-			$action->post->text,
 			array($this, 'wikiLink')
 		);
 	}
