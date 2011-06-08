@@ -7,6 +7,9 @@ class WikiController {
 		'defaultPage' => 'index',
 		'newPageText' => 'This page does not exist yet.<br>Click "Edit" to create it.',
 		'markdownExt' => 'markdown',
+	    'appRoot'     => null,
+	    'allowedTags' => '<p><a>',
+
 	);
 
 	// An instance of the Markdown parser
@@ -18,6 +21,10 @@ class WikiController {
 		$this->initWiki();
 		if ($config) {
 			$this->setConfig($config);
+		}
+
+		if(!$this->config['appRoot']) {
+            $this->config['appRoot'] = dirname(__DIR__) .'/';
 		}
 
 	    require_once __DIR__ . '/cache.php';
@@ -442,8 +449,10 @@ PAGE;
 	    }
 	    else {
 
+	        $content = strip_tags($this->model->content, $this->config['allowedTags']);
+
             $page =  Markdown(
-                $action->model->content,
+                $content,
                 array($this, 'wikiLink'));
 
             $this->cache->set($action->page, $page);
