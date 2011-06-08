@@ -1,12 +1,13 @@
 <?php
 
 # The directory containing the php5-markdown wiki code
-$appRoot = dirname(__FILE__) . '/';
+$appRoot = __DIR__ . '/';
 $libDir  = $appRoot . 'lib/';
 
 $config = array(
 	'docDir'      => $appRoot . 'pages/',
 	'defaultPage' => 'index',
+    'appRoot'     => $appRoot,
 );
 
 # And off we go...

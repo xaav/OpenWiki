@@ -12,12 +12,17 @@ class WikiController {
 	// An instance of the Markdown parser
 	protected $parser;
 	protected $baseUrl;
+	protected $cache;
 
 	public function __construct($config=false) {
 		$this->initWiki();
 		if ($config) {
 			$this->setConfig($config);
 		}
+
+	    require_once __DIR__ . '/cache.php';
+
+		$this->cache = new Cache($this->config['appRoot'] . 'cache' . '/');
 	}
 
 	protected function initWiki() {
@@ -424,11 +429,12 @@ HTML;
 PAGE;
 
 		// the footer
-		include(dirname(__FILE__) . '/footer.php');
+		include __DIR__ . '/footer.php';
 	}
 
 	protected function renderDocument($action) {
-		return Markdown(
+
+	    return Markdown(
 			$action->model->content,
 			array($this, 'wikiLink')
 		);
