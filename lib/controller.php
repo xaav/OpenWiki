@@ -141,11 +141,12 @@ class WikiController {
 		// TODO: Implement some sort of versioning
 		if (empty($action->model)) {
 			// This is a new file
-			$this->addMessage('notice', 'Създаване на нова страница...');
+			$this->addMessage('notice', 'Create a new page...');
 		} elseif ($action->model->updated == $action->post->updated) {
 			// Check there isn't an editing conflict
 			$action->model->content = $action->post->text;
 			$this->setModelData($action->model);
+			$this->cache->clear($action->page);
 
 			$this->redirectTo("{$action->base}{$action->page}", array('success' => 'This page is updated successfully.'));
 		} else {
@@ -434,10 +435,21 @@ PAGE;
 
 	protected function renderDocument($action) {
 
-	    return Markdown(
-			$action->model->content,
-			array($this, 'wikiLink')
-		);
+	    if ($page = $this->cache->get($action->page)) {
+
+	        return $page;
+
+	    }
+	    else {
+
+            $page =  Markdown(
+                $action->model->content,
+                array($this, 'wikiLink'));
+
+            $this->cache->set($action->page, $page);
+
+            return $page;
+	    }
 	}
 
 	protected function renderEditForm($action) {

@@ -46,7 +46,7 @@ class Cache {
 
         if (filesize($cache_path) > 0)
         {
-            $cache = unserialize(fread($fp, filesize($cache_path)));
+            $cache = (fread($fp, filesize($cache_path)));
         }
         else
         {
@@ -76,7 +76,7 @@ class Cache {
 
         if (flock($fp, LOCK_EX))
         {
-            fwrite($fp, serialize($data));
+            fwrite($fp, ($data));
             flock($fp, LOCK_UN);
         }
         else
