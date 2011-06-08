@@ -449,7 +449,7 @@ PAGE;
 	    }
 	    else {
 
-	        $content = strip_tags($this->model->content, $this->config['allowedTags']);
+	        $content = strip_tags($action->model->content, $this->config['allowedTags']);
 
             $page =  Markdown(
                 $content,
