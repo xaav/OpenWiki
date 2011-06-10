@@ -10,8 +10,8 @@ if (!in_array(@$_SERVER['REMOTE_ADDR'], array(
     die('You are not allowed to access this file. Check '.basename(__FILE__).' for more information.');
 }
 
-require_once __DIR__.'/../app/bootstrap.php.cache';
-require_once __DIR__.'/../app/AppKernel.php';
+require_once __DIR__.'/lib/app/bootstrap.php.cache';
+require_once __DIR__.'/lib/app/AppKernel.php';
 
 use Symfony\Component\HttpFoundation\Request;
 
