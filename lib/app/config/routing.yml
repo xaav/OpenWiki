@@ -1,3 +1,7 @@
-wiki_show:
-    pattern:   /
+wiki_edit:
+    pattern: /{page}/edit
+    defaults: { _controller: XaavWikiBundle:Default:edit }
+
+wiki_view:
+    pattern:   /{page}
     defaults:  { _controller: XaavWikiBundle:Default:index }
