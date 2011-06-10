@@ -32,9 +32,29 @@ class DefaultController extends Controller
         $page = new Page();
         $form = $this->createForm(new PageType(), $page);
 
+        if ($this->get('request')->getMethod() == 'POST') {
+            $form->bindRequest($this->get('request'));
+
+            if($form->isValid()) {
+
+                $this->get('pagemanager')->persist($page);
+
+                $this->setFlash('Page Saved', 'success');
+
+                return $this->redirect($this->generateUrl('wiki_view', array(
+                    'page' => $page_name,
+                )));
+            }
+        }
+
         return $this->render('XaavWikiBundle::edit.html.twig', array(
             'title' => sprintf('Editing %s', $page_name),
             'form' => $form->createView(),
         ));
+    }
+
+    protected function setFlash($message, $type)
+    {
+        $this->container->get('session')->setFlash($message, $type);
     }
 }

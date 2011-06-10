@@ -1,10 +1,9 @@
 {% extends 'XaavWikiBundle::base.html.twig' %}
 
 {% block content %}
-<form action="{$action->base}{$action->page}" method="post" id="edit-page-form">
+<form action="#" method="post" id="edit-page-form">
     <fieldset>
         <legend>Edit page</legend>
-        {{ form_errors(form) }}
         <label for="text">Content:</label><br />
         <div id="button-bar"></div>
         {{ form_widget(form.content, { 'id' : 'text' }) }}<br />
@@ -12,7 +11,7 @@
         <div id="preview" class="preview"></div>
         <br>
         <input type="submit" name="save" value="Save">
-        <input type="hidden" name="updated" value="{$form['updated']}">
+        {{ form_rest(form) }}
     </fieldset>
 </form>
 

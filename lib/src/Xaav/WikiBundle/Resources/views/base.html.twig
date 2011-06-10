@@ -12,6 +12,11 @@
 </head>
 <body>
 <div class="container">
+    {% for message, type in app.session.getFlashes() %}
+        <div class="{{ type }}">
+            {{ message }}
+        </div>
+    {% endfor %}
 	{% block content %}{% endblock %}
 </div>
 </body>

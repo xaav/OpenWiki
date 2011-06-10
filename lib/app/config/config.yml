@@ -19,4 +19,14 @@ framework:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
+    
+parameters:
+    pagemanager.class: Xaav\WikiBundle\Entity\PageManager
+    pagemanager.storage_directory: PAGES_DIR
+
+services:
+    pagemanager:
+        class: %pagemanager.class%
+        arguments: [%pagemanager.storage_directory%]
+
 
