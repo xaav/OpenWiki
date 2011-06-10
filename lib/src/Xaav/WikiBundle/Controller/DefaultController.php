@@ -24,4 +24,9 @@ class DefaultController extends Controller
 
         return new Response(ob_get_clean());
     }
+
+    public function editAction()
+    {
+        return $this->indexAction();
+    }
 }
