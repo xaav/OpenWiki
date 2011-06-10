@@ -7,3 +7,15 @@
 [submodule "lib/geshi"]
 	path = lib/geshi
 	url = git://github.com/bitweaver/geshi.git
+[submodule "lib/vendor/symfony"]
+	path = lib/vendor/symfony
+	url = git://github.com/symfony/symfony.git
+[submodule "lib/vendor/twig"]
+	path = lib/vendor/twig
+	url = git://github.com/fabpot/Twig.git
+[submodule "lib/vendor/twig-extensions"]
+	path = lib/vendor/twig-extensions
+	url = git://github.com/fabpot/Twig-extensions.git
+[submodule "lib/vendor/monolog"]
+	path = lib/vendor/monolog
+	url = git://github.com/Seldaek/monolog.git
