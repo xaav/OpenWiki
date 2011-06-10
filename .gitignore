@@ -6,3 +6,5 @@
 /.settings
 /.buildpath
 /.project
+/lib/app/cache
+/lib/app/logs
