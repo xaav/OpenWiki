@@ -4,8 +4,8 @@ wiki_edit:
 
 wiki_view:
     pattern:   /{page}
-    defaults:  { _controller: XaavWikiBundle:Default:index }
+    defaults:  { _controller: XaavWikiBundle:Default:view }
     
 wiki_index:
     pattern: /
-    defaults: { _controller: XaavWikiBundle:Default:index }
+    defaults: { _controller: XaavWikiBundle:Default:view }
