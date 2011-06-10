@@ -1,7 +1,5 @@
-RewriteEngine On
-
-Options +FollowSymLinks
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.*)/?$ index.php?id=$1 [QSA,L]
-
-Options -Indexes
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)$ app.php [QSA,L]
+</IfModule>
