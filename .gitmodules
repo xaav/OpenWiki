@@ -1,12 +1,6 @@
 [submodule "js/wmd"]
 	path = js/wmd
 	url = git://github.com/ChiperSoft/wmd.git
-[submodule "lib/glip"]
-	path = lib/glip
-	url = git://github.com/patrikf/glip.git
-[submodule "lib/geshi"]
-	path = lib/geshi
-	url = git://github.com/bitweaver/geshi.git
 [submodule "lib/vendor/symfony"]
 	path = lib/vendor/symfony
 	url = git://github.com/symfony/symfony.git
