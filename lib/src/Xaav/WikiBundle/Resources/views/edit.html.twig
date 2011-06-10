@@ -1,0 +1,26 @@
+{% extends 'XaavWikiBundle::base.html.twig' %}
+
+{% block content %}
+<form action="{$action->base}{$action->page}" method="post" id="edit-page-form">
+    <fieldset>
+        <legend>Edit page</legend>
+        {{ form_errors(form) }}
+        <label for="text">Content:</label><br />
+        <div id="button-bar"></div>
+        {{ form_widget(form.content, { 'id' : 'text' }) }}<br />
+        <label for="preview">Preview:</label><br />
+        <div id="preview" class="preview"></div>
+        <br>
+        <input type="submit" name="save" value="Save">
+        <input type="hidden" name="updated" value="{$form['updated']}">
+    </fieldset>
+</form>
+
+<script type="text/javascript">
+    setup_wmd({
+        input: "text",
+        button_bar: "button-bar",
+        preview: "preview",
+    });
+</script>
+{% endblock %}
