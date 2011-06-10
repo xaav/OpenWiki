@@ -11,12 +11,17 @@
 
 namespace Xaav\WikiBundle\Controller;
 
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('XaavWikiBundle:Default:index.html.twig');
+        ob_start();
+
+        @require_once PAGES_DIR . '/../index.php';
+
+        return new Response(ob_get_clean());
     }
 }
