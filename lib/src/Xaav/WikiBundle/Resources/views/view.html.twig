@@ -1,0 +1,19 @@
+{% extends 'XaavWikiBundle::base.html.twig' %}
+
+{% block content %}
+<div id="page">
+    
+    <div id="content">
+        {{ page.content }}
+    </div>
+    <div id="related">
+        
+    </div>
+    <div id="actions" class="boxed">
+        <ul>
+            <li class="action-edit id-index"><a href="{{ path('wiki_edit', { 'title': page.title})}}">Edit</a></li>
+            <li class="last action-delete confirm-true id-index"><a href="/w/php5-markdown-wiki/index?action=delete&amp;confirm=true&amp;id=index" onclick="return confirm('Сигурни ли сте?');">Delete</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

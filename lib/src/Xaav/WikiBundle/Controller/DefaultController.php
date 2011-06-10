@@ -18,18 +18,20 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
-    public function viewAction($page_name = 'index')
+    public function viewAction($title = 'index')
     {
-        ob_start();
+        $page = $this->get('pagemanager')->findByTitle($title);
 
-        @require_once PAGES_DIR . '/../index.php';
-
-        return new Response(ob_get_clean());
+        return $this->render('XaavWikiBundle::view.html.twig', array(
+            'page' => $page,
+            'title' => sprintf('Viewing %s', $title),
+        ));
     }
 
-    public function editAction($page_name = '')
+    public function editAction($title = 'index')
     {
         $page = new Page();
+        $page->setTitle($title);
         $form = $this->createForm(new PageType(), $page);
 
         if ($this->get('request')->getMethod() == 'POST') {
@@ -42,13 +44,13 @@ class DefaultController extends Controller
                 $this->setFlash('Page Saved', 'success');
 
                 return $this->redirect($this->generateUrl('wiki_view', array(
-                    'page' => $page_name,
+                    'title' => $title,
                 )));
             }
         }
 
         return $this->render('XaavWikiBundle::edit.html.twig', array(
-            'title' => sprintf('Editing %s', $page_name),
+            'title' => sprintf('Editing %s', $title),
             'form' => $form->createView(),
         ));
     }

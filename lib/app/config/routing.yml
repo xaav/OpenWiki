@@ -1,9 +1,9 @@
 wiki_edit:
-    pattern: /{page}/edit
+    pattern: /{title}/edit
     defaults: { _controller: XaavWikiBundle:Default:edit }
 
 wiki_view:
-    pattern:   /{page}
+    pattern:   /{title}
     defaults:  { _controller: XaavWikiBundle:Default:view }
     
 wiki_index:
