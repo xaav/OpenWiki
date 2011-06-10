@@ -16,3 +16,6 @@
 [submodule "lib/vendor/glip"]
 	path = lib/vendor/glip
 	url = git://github.com/patrikf/glip.git
+[submodule "lib/vendor/hyperlight"]
+	path = lib/vendor/hyperlight
+	url = git://github.com/xaav/Hyperlight.git
