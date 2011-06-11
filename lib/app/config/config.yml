@@ -21,16 +21,16 @@ twig:
     strict_variables: %kernel.debug%
     
 parameters:
-    pagemanager.class: Xaav\WikiBundle\Entity\PageRepository
-    pagemanager.storage_directory: PAGES_DIR
+    wiki_manager.class: Xaav\WikiBundle\Entity\WikiManager
+    wiki_manager.storage_directory: PAGES_DIR
     
 knplabs_markdown:
     parser:
         service: markdown.parser.max
 
 services:
-    pagemanager:
-        class: %pagemanager.class%
-        arguments: [%pagemanager.storage_directory%]
+    wiki_manager:
+        class: %wiki_manager.class%
+        arguments: [%wiki_manager.storage_directory%]
 
 

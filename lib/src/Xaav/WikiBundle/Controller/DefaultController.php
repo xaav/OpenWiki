@@ -39,7 +39,9 @@ class DefaultController extends Controller
 
     public function editAction($title = 'index')
     {
-        $page = $this->get('pagemanager')->findByTitle($title);
+        $page_repository = $this->get('wiki_manager')->getPageRepository();
+
+        $page = $page_repository->findByTitle($title);
         $form = $this->createForm(new PageType(), $page);
 
         if ($this->get('request')->getMethod() == 'POST') {
@@ -47,7 +49,7 @@ class DefaultController extends Controller
 
             if($form->isValid()) {
 
-                $this->get('pagemanager')->persist($page);
+                $page_repository->persist($page);
 
                 $this->invalidate('wiki_view', array('title' => $title));
 
