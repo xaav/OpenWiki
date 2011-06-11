@@ -21,7 +21,7 @@ twig:
     strict_variables: %kernel.debug%
     
 parameters:
-    pagemanager.class: Xaav\WikiBundle\Entity\PageManager
+    pagemanager.class: Xaav\WikiBundle\Entity\PageRepository
     pagemanager.storage_directory: PAGES_DIR
 
 services:

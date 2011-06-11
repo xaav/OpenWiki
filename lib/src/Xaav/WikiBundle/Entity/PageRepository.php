@@ -2,7 +2,7 @@
 
 namespace Xaav\WikiBundle\Entity;
 
-class PageManager
+class PageRepository
 {
     protected $pages_directory;
 
