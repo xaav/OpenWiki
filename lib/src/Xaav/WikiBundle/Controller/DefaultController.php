@@ -21,7 +21,7 @@ class DefaultController extends Controller
 {
     public function viewAction($title = 'index')
     {
-        $page = $this->get('pagemanager')->findByTitle($title);
+        $page = $this->get('wiki_manager')->getPageRepository()->findByTitle($title);
 
         $page->setContent(strip_tags($page->getContent()));
         $page->setContent($this->getParser()->transform($page->getContent()));
