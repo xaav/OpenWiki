@@ -13,6 +13,7 @@ $loader->registerNamespaces(array(
     'Monolog'          => __DIR__.'/../vendor/monolog/src',
     'Assetic'          => __DIR__.'/../vendor/assetic/src',
     'Metadata'         => __DIR__.'/../vendor/metadata/src',
+    'Knplabs'          => __DIR__.'/../vendor/bundles',
     'Xaav'             => __DIR__.'/../src',
 ));
 $loader->registerPrefixes(array(
