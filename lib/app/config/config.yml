@@ -23,6 +23,10 @@ twig:
 parameters:
     pagemanager.class: Xaav\WikiBundle\Entity\PageRepository
     pagemanager.storage_directory: PAGES_DIR
+    
+knplabs_markdown:
+    parser:
+        service: markdown.parser.max
 
 services:
     pagemanager:

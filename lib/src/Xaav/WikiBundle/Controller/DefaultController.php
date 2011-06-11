@@ -15,12 +15,16 @@ use Xaav\WikiBundle\Form\PageType;
 use Xaav\WikiBundle\Entity\Page;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Knplabs\Bundle\MarkdownBundle\Parser\MarkdownParser;
 
 class DefaultController extends Controller
 {
     public function viewAction($title = 'index')
     {
         $page = $this->get('pagemanager')->findByTitle($title);
+
+        $page->setContent(strip_tags($page->getContent()));
+        $page->setContent($this->getParser()->transform($page->getContent()));
 
         return $this->render('XaavWikiBundle::view.html.twig', array(
             'page' => $page,
@@ -30,8 +34,7 @@ class DefaultController extends Controller
 
     public function editAction($title = 'index')
     {
-        $page = new Page();
-        $page->setTitle($title);
+        $page = $this->get('pagemanager')->findByTitle($title);
         $form = $this->createForm(new PageType(), $page);
 
         if ($this->get('request')->getMethod() == 'POST') {
@@ -58,5 +61,13 @@ class DefaultController extends Controller
     protected function setFlash($message, $type)
     {
         $this->container->get('session')->setFlash($message, $type);
+    }
+
+    /**
+     * @return MarkdownParser
+     */
+    protected function getParser()
+    {
+        return $this->container->get('markdown.parser');
     }
 }

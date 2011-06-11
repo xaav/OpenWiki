@@ -20,8 +20,8 @@ class AppKernel extends Kernel
             //new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             //new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             //new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
-            new Xaav\WikiBundle\XaavWikiBundle(),
             new Knplabs\Bundle\MarkdownBundle\KnplabsMarkdownBundle(),
+            new Xaav\WikiBundle\XaavWikiBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
