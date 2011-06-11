@@ -19,3 +19,6 @@
 [submodule "lib/vendor/hyperlight"]
 	path = lib/vendor/hyperlight
 	url = git://github.com/xaav/Hyperlight.git
+[submodule "lib/vendor/bundles/Knplabs/Bundle/MarkdownBundle"]
+	path = lib/vendor/bundles/Knplabs/Bundle/MarkdownBundle
+	url = git://github.com/knplabs/MarkdownBundle.git
