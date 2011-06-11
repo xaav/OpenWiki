@@ -33,7 +33,6 @@ class DefaultController extends Controller
 
         $response->setPublic();
         $response->setSharedMaxAge(600);
-        $response->headers->addCacheControlDirective('must-revalidate', true);
 
         return $response;
     }
@@ -49,8 +48,6 @@ class DefaultController extends Controller
             if($form->isValid()) {
 
                 $this->get('pagemanager')->persist($page);
-
-                $this->setFlash('Page Saved', 'success');
 
                 $this->invalidate('wiki_view', array('title' => $title));
 
