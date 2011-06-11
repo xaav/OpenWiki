@@ -26,10 +26,15 @@ class DefaultController extends Controller
         $page->setContent(strip_tags($page->getContent()));
         $page->setContent($this->getParser()->transform($page->getContent()));
 
-        return $this->render('XaavWikiBundle::view.html.twig', array(
+        $response = $this->render('XaavWikiBundle::view.html.twig', array(
             'page' => $page,
             'title' => sprintf('Viewing %s', $title),
         ));
+
+        $response->setPublic();
+        $response->setSharedMaxAge(600);
+
+        return $response;
     }
 
     public function editAction($title = 'index')
