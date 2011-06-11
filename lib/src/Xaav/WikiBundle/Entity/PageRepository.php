@@ -16,7 +16,7 @@ class PageRepository
         $page = new Page();
         $page->setTitle($title);
 
-        $page->setContent(file_get_contents($this->getFilenameByTitle($title)));
+        $page->setContent(@file_get_contents($this->getFilenameByTitle($title)));
 
         return $page;
     }

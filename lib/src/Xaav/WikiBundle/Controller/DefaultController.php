@@ -33,6 +33,7 @@ class DefaultController extends Controller
 
         $response->setPublic();
         $response->setSharedMaxAge(600);
+        $response->headers->addCacheControlDirective('must-revalidate', true);
 
         return $response;
     }
@@ -50,6 +51,8 @@ class DefaultController extends Controller
                 $this->get('pagemanager')->persist($page);
 
                 $this->setFlash('Page Saved', 'success');
+
+                $this->invalidate('wiki_view', array('title' => $title));
 
                 return $this->redirect($this->generateUrl('wiki_view', array(
                     'title' => $title,
@@ -74,5 +77,14 @@ class DefaultController extends Controller
     protected function getParser()
     {
         return $this->container->get('markdown.parser');
+    }
+
+    protected function invalidate($route, $parameters = array())
+    {
+        $url = $this->generateUrl($route, $parameters, true);
+
+        $context = stream_context_create(array('http'=>array('method'=>'PURGE')));
+        $stream = fopen($url, 'r', false, $context);
+        fclose($stream);
     }
 }
