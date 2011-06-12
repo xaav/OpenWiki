@@ -1,4 +1,8 @@
+parameters:
+    git_repository.class: Glip\Git
+    git_repository.data_directory: "./pages"
+
 services:
     git_repository:
-        class: Glip\Git
-        arguments: ["./pages"]
+        class: %git_repository.class%
+        arguments: [%git_repository.data_directory%]
