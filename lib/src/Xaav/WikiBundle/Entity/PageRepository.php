@@ -8,7 +8,7 @@ class PageRepository
 
     public function __construct($pages_directory)
     {
-        $this->pages_directory = constant($pages_directory); //Hack
+        $this->pages_directory = $pages_directory;
     }
 
     public function findByTitle($title)

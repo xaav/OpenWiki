@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             //new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new Knplabs\Bundle\MarkdownBundle\KnplabsMarkdownBundle(),
             new Xaav\WikiBundle\XaavWikiBundle(),
+            new Xaav\GlipBundle\XaavGlipBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

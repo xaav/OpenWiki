@@ -22,7 +22,7 @@ twig:
     
 parameters:
     wiki_manager.class: Xaav\WikiBundle\Entity\WikiManager
-    wiki_manager.storage_directory: PAGES_DIR
+    wiki_manager.storage_directory: "./pages"
     
 knplabs_markdown:
     parser:

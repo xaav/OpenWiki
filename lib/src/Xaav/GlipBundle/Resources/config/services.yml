@@ -1,0 +1,4 @@
+services:
+    git_repository:
+        class: Glip\Git
+        arguments: ["./pages"]
