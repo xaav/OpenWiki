@@ -20,17 +20,10 @@ twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
     
-parameters:
-    wiki_manager.class: Xaav\WikiBundle\Entity\WikiManager
-    wiki_manager.storage_directory: "./pages"
-    
+# Markdown Configuration
 knplabs_markdown:
     parser:
         service: markdown.parser.max
 
-services:
-    wiki_manager:
-        class: %wiki_manager.class%
-        arguments: [%wiki_manager.storage_directory%]
 
 
