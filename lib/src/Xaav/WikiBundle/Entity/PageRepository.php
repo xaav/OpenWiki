@@ -4,11 +4,23 @@ namespace Xaav\WikiBundle\Entity;
 
 class PageRepository
 {
+    /**
+     * @deprecated
+     */
     protected $pages_directory;
+    protected $manager;
 
-    public function __construct($pages_directory)
+    public function __construct($pages_directory, WikiManager $manager)
     {
+        $this->manager = $manager;
         $this->pages_directory = $pages_directory;
+    }
+
+    public function getGitPageByFileName($filename)
+    {
+        $tree = $this->manager->getTree();
+
+        return $tree[$filename];
     }
 
     public function findByTitle($title)

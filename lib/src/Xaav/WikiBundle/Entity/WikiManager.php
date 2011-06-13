@@ -2,6 +2,9 @@
 
 namespace Xaav\WikiBundle\Entity;
 
+use Glip\GitTree;
+use Glip\GitCommit;
+use Glip\GitBranch;
 use Glip\Git;
 
 class WikiManager
@@ -21,11 +24,31 @@ class WikiManager
     public function __construct($data_directory, Git $git_repository)
     {
         $this->git_repository = $git_repository;
+        $this->data_directory = $data_directory;
     }
 
-    protected function getMaster()
+    /**
+     * @return GitBranch
+     */
+    public function getMaster()
     {
         return $this->git_repository['master'];
+    }
+
+    /**
+     * @return GitCommit
+     */
+    public function getTip()
+    {
+        return $this->getMaster()->getTip();
+    }
+
+    /**
+     * @return GitTree
+     */
+    public function getTree()
+    {
+        return $this->getTip()->tree;
     }
 
     public function getPageRepository()
@@ -36,7 +59,7 @@ class WikiManager
         }
         else {
 
-            return $this->page_repository = new PageRepository($this->data_directory);
+            return $this->page_repository = new PageRepository($this->data_directory, $this);
         }
     }
 
