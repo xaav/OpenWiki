@@ -20,7 +20,7 @@ class RevisonRepository
 
     public function commitRevison(Revision $revision)
     {
-        //Commit the revision
+        $this->getMaster()->updateTipTo($revision->getCommit());
     }
 
     /**

@@ -27,4 +27,9 @@ class Revision
         $this->commit->tree[$page->getPath()] = $page->getBlob();
     }
 
+    public function getCommit()
+    {
+        return $this->commit;
+    }
+
 }
