@@ -12,11 +12,20 @@ class WikiManager
     protected $data_directory;
     protected $page_repository;
     protected $version_repository;
+
+    /**
+     * @var Git
+     */
     protected $git_repository;
 
     public function __construct($data_directory, Git $git_repository)
     {
         $this->git_repository = $git_repository;
+    }
+
+    protected function getMaster()
+    {
+        return $this->git_repository['master'];
     }
 
     public function getPageRepository()
