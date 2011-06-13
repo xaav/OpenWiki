@@ -2,15 +2,21 @@
 
 namespace Xaav\WikiBundle\Entity;
 
+use Glip\Git;
+
 class WikiManager
 {
+    /**
+     * @deprecated
+     */
     protected $data_directory;
     protected $page_repository;
     protected $version_repository;
+    protected $git_repository;
 
-    public function __construct($data_directory)
+    public function __construct($data_directory, Git $git_repository)
     {
-        $this->data_directory = $data_directory;
+        $this->git_repository = $git_repository;
     }
 
     public function getPageRepository()
