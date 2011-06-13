@@ -2,47 +2,27 @@
 
 namespace Xaav\WikiBundle\Entity;
 
+use Glip\Git;
+
 class PageRepository
 {
     /**
-     * @deprecated
+     * @var Git
      */
-    protected $pages_directory;
-    protected $manager;
+    protected $git_repository;
 
-    public function __construct($pages_directory, WikiManager $manager)
+    public function __construct(Git $git_repository)
     {
-        $this->manager = $manager;
-        $this->pages_directory = $pages_directory;
+        $this->git_repository = $git_repository;
     }
 
-    public function getGitPageByFileName($filename)
+    public function findLatestByTitle($title)
     {
-        $tree = $this->manager->getTree();
 
-        return $tree[$filename];
-    }
-
-    public function findByTitle($title)
-    {
-        $page = new Page();
-        $page->setTitle($title);
-
-        $page->setContent(@file_get_contents($this->getFilenameByTitle($title)));
-
-        return $page;
     }
 
     public function persist(Page $page)
     {
-        $filename = $this->getFilenameByTitle($page->getTitle());
-        $contents = $page->getContent();
 
-        file_put_contents($filename, $contents);
-    }
-
-    protected function getFilenameByTitle($title)
-    {
-        return $this->pages_directory.'/'.$title.'.markdown';
     }
 }

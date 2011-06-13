@@ -11,7 +11,7 @@ class WikiManager
 {
 
     protected $page_repository;
-    protected $version_repository;
+    protected $revision_repository;
 
     /**
      * @var Git

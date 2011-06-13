@@ -5,8 +5,14 @@ namespace Xaav\WikiBundle\Entity;
 class Page
 {
     protected $title;
-
     protected $content;
+
+    protected $revision;
+
+    public function __construct(Revison $revision)
+    {
+        $this->revision = $revision;
+    }
 
     public function setTitle($title)
     {
