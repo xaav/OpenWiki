@@ -8,7 +8,6 @@ class Page
 {
     protected $title;
     protected $content;
-
     protected $blob;
 
     public function __construct(GitBlob $blob)
@@ -34,5 +33,26 @@ class Page
     public function getContent()
     {
         return $this->content;
+    }
+
+    /**
+     * Calculates the path based on the title
+     */
+    public function getPath()
+    {
+        return $this->getPathFromTitle($this->title);
+    }
+
+    /**
+     * @return GitBlob
+     */
+    public function getBlob()
+    {
+        return $this->blob;
+    }
+
+    public static function getPathFromTitle($title)
+    {
+        return $title.'.markdown';
     }
 }
