@@ -1,8 +1,7 @@
 parameters:
     wiki_manager.class: Xaav\WikiBundle\Entity\WikiManager
-    wiki_manager.storage_directory: "./pages"
 
 services:
     wiki_manager:
         class: %wiki_manager.class%
-        arguments: [%wiki_manager.storage_directory%]
+        arguments: [%git_repository.data_directory%, @git_repository]
