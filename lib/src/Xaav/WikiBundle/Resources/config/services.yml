@@ -4,4 +4,4 @@ parameters:
 services:
     wiki_manager:
         class: %wiki_manager.class%
-        arguments: [%git_repository.data_directory%, @git_repository]
+        arguments: [@git_repository]
