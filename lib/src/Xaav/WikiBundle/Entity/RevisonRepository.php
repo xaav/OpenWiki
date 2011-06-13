@@ -18,6 +18,11 @@ class RevisonRepository
         return new Revision($this->getTip());
     }
 
+    public function commitRevison(Revision $revision)
+    {
+        //Commit the revision
+    }
+
     /**
      * @return GitBranch
      */

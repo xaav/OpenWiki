@@ -20,9 +20,4 @@ class PageRepository
     {
 
     }
-
-    public function persist(Page $page)
-    {
-
-    }
 }

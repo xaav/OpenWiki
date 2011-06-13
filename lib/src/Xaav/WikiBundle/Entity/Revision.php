@@ -15,6 +15,11 @@ class Revision
 
     public function getPageByTitle($title)
     {
+        //Get page by title
+    }
 
+    public function addPage(Page $page)
+    {
+        //Add page
     }
 }

@@ -2,16 +2,18 @@
 
 namespace Xaav\WikiBundle\Entity;
 
+use Glip\GitBlob;
+
 class Page
 {
     protected $title;
     protected $content;
 
-    protected $revision;
+    protected $blob;
 
-    public function __construct(Revison $revision)
+    public function __construct(GitBlob $blob)
     {
-        $this->revision = $revision;
+        $this->blob = $blob;
     }
 
     public function setTitle($title)
