@@ -29,6 +29,7 @@ class WikiManager
 
     /**
      * @return GitBranch
+     * @deprecated
      */
     public function getMaster()
     {
@@ -37,6 +38,7 @@ class WikiManager
 
     /**
      * @return GitCommit
+     * @deprecated
      */
     public function getTip()
     {
@@ -45,6 +47,7 @@ class WikiManager
 
     /**
      * @return GitTree
+     * @deprecated
      */
     public function getTree()
     {
@@ -63,15 +66,15 @@ class WikiManager
         }
     }
 
-    public function getVersionRepository()
+    public function getRevisionRepository()
     {
-        if($this->version_repository) {
+        if($this->revision_repository) {
 
-            return $this->version_repository;
+            return $this->revision_repository;
         }
         else {
 
-            return $this->version_repository = new VersionRepository($this->data_directory);
+            return $this->revision_repository = new RevisionRepository($this->git_repository);
         }
     }
 }
