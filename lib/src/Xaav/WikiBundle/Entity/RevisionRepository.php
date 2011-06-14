@@ -15,27 +15,11 @@ class RevisionRepository
 
     public function getLatest()
     {
-        return new Revision($this->getTip());
+        return new Revision($this->_manager->getTip());
     }
 
     public function commitRevison(Revision $revision)
     {
-        $this->getMaster()->updateTipTo($revision->getCommit());
-    }
-
-    /**
-     * @return GitBranch
-     */
-    protected function getMaster()
-    {
-        return $this->git_repository['master'];
-    }
-
-    /**
-     * @return GitCommit
-     */
-    protected function getTip()
-    {
-        return $this->getMaster()->getTip();
+        $this->_manager->getMaster()->updateTipTo($revision->getCommit());
     }
 }

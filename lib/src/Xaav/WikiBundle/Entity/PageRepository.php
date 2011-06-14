@@ -22,6 +22,6 @@ class PageRepository
      */
     public function findPagesByTitle($title)
     {
-        throw new NotImplementedException($message);
+        throw new NotImplementedException();
     }
 }

@@ -52,4 +52,20 @@ class WikiManager
             return $this->revision_repository = $repository;
         }
     }
+
+    /**
+     * @return GitBranch
+     */
+    protected function getMaster()
+    {
+        return $this->git_repository['master'];
+    }
+
+    /**
+     * @return GitCommit
+     */
+    protected function getTip()
+    {
+        return $this->getMaster()->getTip();
+    }
 }
