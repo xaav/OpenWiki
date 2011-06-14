@@ -4,7 +4,7 @@ namespace Xaav\WikiBundle\Entity;
 
 use Glip\Git;
 
-class RevisonRepository
+class RevisionRepository
 {
     protected $git_repository;
 
