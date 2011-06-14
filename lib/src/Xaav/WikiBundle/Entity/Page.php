@@ -8,7 +8,10 @@ use Xaav\WikiBundle\Entity\Revision;
 class Page
 {
     protected $title;
-    protected $content;
+
+    /**
+     * @var GitBlob
+     */
     protected $blob;
 
     /**
@@ -33,12 +36,12 @@ class Page
 
     public function setContent($content)
     {
-        $this->content = $content;
+        $this->blob->data['data'] = $content;
     }
 
     public function getContent()
     {
-        return $this->content;
+        return $this->blob->data['data'];
     }
 
     /**
