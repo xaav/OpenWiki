@@ -56,7 +56,7 @@ class WikiManager
     /**
      * @return GitBranch
      */
-    protected function getMaster()
+    public function getMaster()
     {
         return $this->git_repository['master'];
     }
@@ -64,7 +64,7 @@ class WikiManager
     /**
      * @return GitCommit
      */
-    protected function getTip()
+    public function getTip()
     {
         return $this->getMaster()->getTip();
     }

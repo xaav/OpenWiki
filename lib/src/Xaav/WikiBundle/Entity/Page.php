@@ -38,7 +38,7 @@ class Page
     /**
      * Calculates the path based on the title
      */
-    public function getPath($title)
+    public function getPath()
     {
         return $this->title.'.markdown';
     }

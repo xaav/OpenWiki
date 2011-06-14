@@ -19,12 +19,11 @@ class Revision
 
     public function getPageByTitle($title)
     {
-        return new Page($this->commit->tree[Page::getPathFromTitle($title)]);
-    }
+        $page = new Page();
+        $page->setTitle($title);
+        $page->setBlob($this->commit->tree[$page->getPath()]);
 
-    public function addPage(Page $page)
-    {
-        $this->commit->tree[$page->getPath()] = $page->getBlob();
+        return $page;
     }
 
     public function getCommit()
@@ -32,4 +31,8 @@ class Revision
         return $this->commit;
     }
 
+    public function setCommit(GitCommit $commit)
+    {
+        $this->commit = $commit;
+    }
 }
