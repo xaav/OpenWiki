@@ -31,7 +31,10 @@ class WikiManager
         }
         else {
 
-            return $this->page_repository = new PageRepository($this->git_repository);
+            $repository = $this->page_repository = new PageRepository($this->git_repository);
+            $repository->_manager = $this;
+
+            return $this->page_repository = $repository;
         }
     }
 
@@ -43,7 +46,10 @@ class WikiManager
         }
         else {
 
-            return $this->revision_repository = new RevisionRepository($this->git_repository);
+            $repository = new RevisionRepository($this->git_repository);
+            $repository->_manager = $this;
+
+            return $this->revision_repository = $repository;
         }
     }
 }

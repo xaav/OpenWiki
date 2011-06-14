@@ -2,6 +2,7 @@
 
 namespace Xaav\WikiBundle\Entity;
 
+use Xaav\WikiBundle\Exception\NotImplementedException;
 use Glip\Git;
 
 class PageRepository
@@ -16,8 +17,11 @@ class PageRepository
         $this->git_repository = $git_repository;
     }
 
-    public function findLatestByTitle($title)
+    /**
+     * Find all pages that have the specified title.
+     */
+    public function findPagesByTitle($title)
     {
-
+        throw new NotImplementedException($message);
     }
 }
