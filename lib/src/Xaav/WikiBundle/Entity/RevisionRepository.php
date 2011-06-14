@@ -18,7 +18,7 @@ class RevisionRepository
         return new Revision($this->_manager->getTip());
     }
 
-    public function commitRevison(Revision $revision)
+    public function persist(Revision $revision)
     {
         $this->_manager->getMaster()->updateTipTo($revision->getCommit());
     }

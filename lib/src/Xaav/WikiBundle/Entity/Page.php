@@ -3,12 +3,18 @@
 namespace Xaav\WikiBundle\Entity;
 
 use Glip\GitBlob;
+use Xaav\WikiBundle\Entity\Revision;
 
 class Page
 {
     protected $title;
     protected $content;
     protected $blob;
+
+    /**
+     * @var Revision
+     */
+    protected $revision;
 
     public function __construct(GitBlob $blob = null)
     {
@@ -54,5 +60,15 @@ class Page
     public function setBlob(GitBlob $blob)
     {
         $this->blob = $blob;
+    }
+
+    public function setRevision(Revision $revision)
+    {
+        $this->revision = $revision;
+    }
+
+    public function getRevision()
+    {
+        return $this->revision;
     }
 }

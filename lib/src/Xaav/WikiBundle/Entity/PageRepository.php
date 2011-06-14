@@ -24,4 +24,16 @@ class PageRepository
     {
         throw new NotImplementedException();
     }
+
+    public function persist(Page $page)
+    {
+        if($page->revision) {
+
+            throw new NotImplementedException();
+        }
+        else {
+
+            throw new \UnexpectedValueException('Page must have revision to be persisted');
+        }
+    }
 }
