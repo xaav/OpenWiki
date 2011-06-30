@@ -1,7 +1,13 @@
-PHP5 Markdown
-=============
+SimpleWiki
+==========
 
-A simple wiki. This project uses a light version of symfony2. WMD is used for the editor. glip is used for version history.
+A simple wiki.
+
+This project uses the following components:
+
+- [Symfony2](http://github.com/symfony/symfony)
+- [WMD Markdown Editor](http://github.com/ChiperSoft/wmd)
+- [GitBundle](http://github.com/xaav/GitBundle)
 
 Disclaimer
 ----------
