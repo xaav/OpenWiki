@@ -2,8 +2,7 @@
 
 namespace Xaav\WikiBundle\Entity;
 
-use Glip\GitBlob;
-use Xaav\WikiBundle\Entity\Revision;
+use Xaav\GitBundle\Git\GitBlob;
 
 class Page
 {
@@ -41,7 +40,7 @@ class Page
 
     public function getContent()
     {
-        return $this->blob->data['data'];
+        return $this->blob->data;
     }
 
     /**

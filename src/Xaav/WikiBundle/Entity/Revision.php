@@ -2,8 +2,7 @@
 
 namespace Xaav\WikiBundle\Entity;
 
-use Glip\GitBlob;
-use Glip\GitCommit;
+use Xaav\GitBundle\Git\GitCommit;
 
 class Revision
 {
@@ -21,7 +20,7 @@ class Revision
     {
         $page = new Page();
         $page->setTitle($title);
-        $page->setBlob($this->commit->tree[$page->getPath()]);
+        $page->setBlob($this->commit->getTree()->child($page->getPath()));
 
         return $page;
     }

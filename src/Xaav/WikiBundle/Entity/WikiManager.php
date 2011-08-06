@@ -2,6 +2,7 @@
 
 namespace Xaav\WikiBundle\Entity;
 
+use Xaav\GitBundle\Git\GitCommit;
 use Xaav\GitBundle\Git\GitRepository;
 
 class WikiManager
@@ -63,6 +64,6 @@ class WikiManager
      */
     public function getTip()
     {
-        return $this->getMaster()->getTip();
+        return $this->git_repository->getTip()->getObject();
     }
 }

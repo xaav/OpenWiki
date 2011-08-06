@@ -2,13 +2,13 @@
 
 namespace Xaav\WikiBundle\Entity;
 
-use Glip\Git;
+use Xaav\GitBundle\Git\GitRepository;
 
 class RevisionRepository
 {
     protected $git_repository;
 
-    public function __construct(Git $git_repository)
+    public function __construct(GitRepository $git_repository)
     {
         $this->git_repository = $git_repository;
     }
