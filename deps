@@ -58,6 +58,10 @@
     target=/bundles/Symfony/Bundle/AsseticBundle
     version=v1.0.0RC2
 
-[MarkdownBundle]
+[KnpMarkdownBundle]
     git=https://github.com/knplabs/KnpMarkdownBundle.git
     target=/bundles/Knp/Bundle/MarkdownBundle
+    
+[XaavGitBundle]
+    git=https://github.com/xaav/XaavGitBundle.git
+    target=/bundles/Xaav/GitBundle
