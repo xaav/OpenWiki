@@ -1,7 +1,0 @@
-parameters:
-    wiki_manager.class: Xaav\WikiBundle\Entity\WikiManager
-
-services:
-    wiki_manager:
-        class: %wiki_manager.class%
-        arguments: [@git_repository]

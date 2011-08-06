@@ -2,10 +2,7 @@
 
 namespace Xaav\WikiBundle\Entity;
 
-use Glip\GitTree;
-use Glip\GitCommit;
-use Glip\GitBranch;
-use Glip\Git;
+use Xaav\GitBundle\Git\GitRepository;
 
 class WikiManager
 {
@@ -18,7 +15,7 @@ class WikiManager
      */
     protected $git_repository;
 
-    public function __construct(Git $git_repository)
+    public function __construct(GitRepository $git_repository)
     {
         $this->git_repository = $git_repository;
     }
