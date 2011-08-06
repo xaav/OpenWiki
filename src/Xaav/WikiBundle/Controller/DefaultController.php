@@ -11,6 +11,9 @@
 
 namespace Xaav\WikiBundle\Controller;
 
+use Xaav\GitBundle\Git\GitRepository;
+use Xaav\WikiBundle\Entity\WikiManager;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Xaav\WikiBundle\Form\PageType;
 use Xaav\WikiBundle\Entity\Page;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,10 +22,18 @@ use Knplabs\Bundle\MarkdownBundle\Parser\MarkdownParser;
 
 class DefaultController extends Controller
 {
+    public function getWikiManager()
+    {
+        return new WikiManager(new GitRepository(__DIR__.'/../../../../test.git'));
+    }
+
+    /**
+     * @Route("/{title}", name="view")
+     */
     public function viewAction($title = 'index')
     {
         $page = $this
-                    ->get('wiki_manager')
+                    ->getWikiManager()
                     ->getRevisionRepository()
                     ->getLatest()
                     ->getPageByTitle($title);
