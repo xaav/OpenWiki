@@ -4,7 +4,7 @@ namespace Xaav\WikiBundle\Entity;
 
 use Xaav\GitBundle\Git\GitRepository;
 
-class RevisionRepository
+class RevisionRepository extends Repository
 {
     protected $git_repository;
 
@@ -15,11 +15,6 @@ class RevisionRepository
 
     public function getLatest()
     {
-        return new Revision($this->_manager->getTip());
-    }
-
-    public function persist(Revision $revision)
-    {
-        $this->_manager->getMaster()->updateTipTo($revision->getCommit());
+        return new Revision($this->getTip());
     }
 }

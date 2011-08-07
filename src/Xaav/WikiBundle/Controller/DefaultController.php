@@ -64,9 +64,12 @@ class DefaultController extends Controller
      */
     public function editAction($title = 'index')
     {
-        $page_repository = $this->get('wiki_manager')->getPageRepository();
+        $page = $this
+                    ->getWikiManager()
+                    ->getRevisionRepository()
+                    ->getLatest()
+                    ->getPageByTitle($title);
 
-        $page = $page_repository->findByTitle($title);
         $form = $this->createForm(new PageType(), $page);
 
         if ($this->get('request')->getMethod() == 'POST') {
