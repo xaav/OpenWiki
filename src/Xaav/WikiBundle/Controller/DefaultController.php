@@ -28,6 +28,7 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/", name="wiki_index")
      * @Route("/{title}", name="wiki_view")
      */
     public function viewAction($title = 'index')
