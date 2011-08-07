@@ -30,7 +30,6 @@ class WikiManager
         else {
 
             $repository = $this->page_repository = new PageRepository($this->git_repository);
-            $repository->_manager = $this;
 
             return $this->page_repository = $repository;
         }
@@ -45,25 +44,8 @@ class WikiManager
         else {
 
             $repository = new RevisionRepository($this->git_repository);
-            $repository->_manager = $this;
 
             return $this->revision_repository = $repository;
         }
-    }
-
-    /**
-     * @return GitBranch
-     */
-    public function getMaster()
-    {
-        return $this->git_repository['master'];
-    }
-
-    /**
-     * @return GitCommit
-     */
-    public function getTip()
-    {
-        return $this->git_repository->getTip()->getObject();
     }
 }
