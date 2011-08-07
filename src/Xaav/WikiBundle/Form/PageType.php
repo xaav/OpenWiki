@@ -11,4 +11,9 @@ class PageType extends AbstractType
     {
         $builder->add('content', 'textarea');
     }
+
+    public function getName()
+    {
+        return 'page';
+    }
 }
