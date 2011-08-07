@@ -28,7 +28,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/{title}", name="view")
+     * @Route("/{title}", name="wiki_view")
      */
     public function viewAction($title = 'index')
     {
@@ -52,6 +52,9 @@ class DefaultController extends Controller
         return $response;
     }
 
+    /**
+     * @Route("/{title}/edit", name="wiki_edit")
+     */
     public function editAction($title = 'index')
     {
         $page_repository = $this->get('wiki_manager')->getPageRepository();
