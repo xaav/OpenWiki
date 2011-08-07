@@ -4,7 +4,7 @@ namespace Xaav\WikiBundle\Entity;
 
 use Xaav\GitBundle\Git\GitBlob;
 
-class Page
+class Page extends Entity
 {
     protected $title;
 
@@ -69,6 +69,9 @@ class Page
         $this->revision = $revision;
     }
 
+    /**
+     * Many pages to one revision.
+     */
     public function getRevision()
     {
         return $this->revision;

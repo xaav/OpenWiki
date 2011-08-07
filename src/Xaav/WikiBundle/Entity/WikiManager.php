@@ -48,4 +48,14 @@ class WikiManager
             return $this->revision_repository = $repository;
         }
     }
+
+    public function persist(Entity $entity)
+    {
+        if($entity instanceof Revision) {
+            //
+        }
+        elseif($entity instanceof Page) {
+            //
+        }
+    }
 }

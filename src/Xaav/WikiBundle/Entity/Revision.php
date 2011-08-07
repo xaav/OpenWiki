@@ -4,7 +4,7 @@ namespace Xaav\WikiBundle\Entity;
 
 use Xaav\GitBundle\Git\GitCommit;
 
-class Revision
+class Revision extends Entity
 {
     /**
      * @var GitCommit
@@ -16,6 +16,9 @@ class Revision
         $this->commit = $commit;
     }
 
+    /**
+     * Many pages to one revision.
+     */
     public function getPageByTitle($title)
     {
         $page = new Page();

@@ -5,7 +5,7 @@ namespace Xaav\WikiBundle\Entity;
 use Xaav\WikiBundle\Exception\NotImplementedException;
 use Glip\Git;
 
-class PageRepository
+class PageRepository extends Repository
 {
     /**
      * @var Git
@@ -23,17 +23,5 @@ class PageRepository
     public function findPagesByTitle($title)
     {
         throw new NotImplementedException();
-    }
-
-    public function persist(Page $page)
-    {
-        if($page->revision) {
-
-            throw new NotImplementedException();
-        }
-        else {
-
-            throw new \UnexpectedValueException('Page must have revision to be persisted');
-        }
     }
 }
