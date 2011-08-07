@@ -39,8 +39,14 @@ class DefaultController extends Controller
                     ->getLatest()
                     ->getPageByTitle($title);
 
+        $this->get('logger')->debug($page->getContent());
+
+
         $page->setContent(strip_tags($page->getContent()));
-        $page->setContent($this->getParser()->transform($page->getContent()));
+
+        //$page->setContent($this->getParser()->transform($page->getContent()));
+
+        $this->get('logger')->debug($page->getContent());
 
         $response = $this->render('XaavWikiBundle::view.html.twig', array(
             'page' => $page,
@@ -94,7 +100,7 @@ class DefaultController extends Controller
      */
     protected function getParser()
     {
-        return $this->container->get('markdown.parser');
+        return $this->get('markdown.parser');
     }
 
     protected function invalidate($route, $parameters = array())
